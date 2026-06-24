@@ -8,15 +8,18 @@
   <style>
     :root {
       --bg-image: url("JettaGLIBG.jpg");
-      --accent: #1F2F57; /* VW-inspired deep blue */
-      --text: #D5A74D;
+      --accent: #1F2F57; /* VW deep blue */
+
+      --text-primary: #F5F5F5;
+      --text-secondary: #FFFFFF;
+
       --card-bg: rgba(51, 51, 51, 0.45);
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: var(--text);
+      color: var(--text-primary);
       background: var(--bg-image) center/cover no-repeat fixed;
       display: flex;
       justify-content: center;
@@ -49,11 +52,13 @@
     h1 {
       margin: 0;
       font-size: 26px;
+      color: var(--text-primary);
     }
 
     p {
       margin: 8px 0 18px;
-      opacity: 0.85;
+      opacity: 1;
+      color: var(--text-secondary);
     }
 
     .btn {
