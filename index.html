@@ -6,7 +6,11 @@
   <title>Raymond | Volkswagen Specialist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex Brush&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   
   <style>
     :root {
@@ -57,7 +61,7 @@
     h1 {
       margin: 0;
       font-size: 44px;
-      font-family: "Alex Brush", cursive;
+      font-family: "Alex+Brush", cursive;
       color: var(--gold);
     }
 
@@ -111,7 +115,15 @@
     }
 
     .phone {
-  color: #25D366;
+      color: #25D366;
+    }
+
+    .message {
+      color: var(--vw-light-blue);
+    }
+
+    .email {
+      color: var(--vw-gray);
     }
     
      .footer {
@@ -142,11 +154,19 @@
 
     <!-- Optional icons -->
     <div class="icon-row">
-      <a class="icon" href="tel:7276312950">📞</a>
-      <a class="icon" href="sms:7276312950">💬</a>
-      <a class="icon" href="mailto:raymondcjr.vw@gmail.com">✉️</a>
-    </div>
+    <a class="icon phone" href="tel:7276312950">
+    <i class="fa-solid fa-phone"></i>
+    </a>
 
+    <a class="icon message" href="sms:7276312950">
+    <i class="fa-solid fa-message"></i>
+    </a>
+
+    <a class="icon email" href="mailto:raymondcjr.vw@gmail.com">
+    <i class="fa-solid fa-envelope"></i>
+    </a>
+</div>
+    
     <div class="footer">
       Volkswagen
     </div>
