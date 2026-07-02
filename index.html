@@ -41,7 +41,7 @@
     .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.40);
+      background: rgba(0,0,0,0.35);
     }
 
     .container {
@@ -61,11 +61,15 @@
     }
 
     h1 {
-      margin: 0;
-      font-size: 50px;
-      font-family: "Alex Brush", cursive;
-      color: var(--b-silver);
-    }
+    margin: 0;
+    font-size: 50px;
+    font-family: "Alex Brush", cursive;
+    color: var(--b-silver);
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,0.18),
+        0 2px 3px rgba(0,0,0,0.20);
+}
 
     p {
       margin: 12px 0 18px;
