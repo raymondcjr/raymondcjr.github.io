@@ -19,6 +19,7 @@
       --gold: #D5A74D;
       --silver: #C6C6C6;
       --b-silver: #D5D5D5;
+      --m-silver: #D8D8D8;
       --gray: #999999;
       --white: #F5F5F5;
       --vw-blue: #1F2F57;
@@ -61,12 +62,27 @@
     }
 
     h1 {
-      margin: 0;
-      font-size: 50px;
-      font-family: "Alex Brush", cursive;
-      color: var(--b-silver);
-    }
+  margin: 0;
+  font-size: 50px;
+  font-family: "Alex Brush", cursive;
 
+  background: linear-gradient(
+    to bottom,
+    #F4F4F4 0%,
+    #E2E2E2 18%,
+    #D5D5D5 45%,
+    #C6C6C6 72%,
+    #E8E8E8 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.15),
+    0 -1px 1px rgba(0,0,0,0.18);
+}
     p {
       margin: 12px 0 18px;
       opacity: 1;
