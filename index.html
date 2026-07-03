@@ -1,69 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raymond | Volkswagen Specialist</title>
-
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  
   <style>
-
-    /*==================================================
-      COLOR PALETTE
-    ==================================================*/
-
     :root {
-
-      /* ---------- Background ---------- */
-
       --bg-image: url("JettaGLIBG.jpg");
-      --card-bg: rgba(51, 51, 51, 0.25);
-
-      /* ---------- Volkswagen ---------- */
-
+      --accent: #1F2F57; /* VW deep blue */
+      --gold: #D5A74D;
+      --silver: #C6C6C6;
+      --med-silver: #D5D5D5;
+      --bright-silver: #D8D8D8;
+      --light-silver: #CECECE;
+      --gray: #999999;
+      --white: #F5F5F5;
       --vw-blue: #1F2F57;
       --vw-light-blue: #6091C3;
       --bright-blue: #64A0F2;
-
-      /* ---------- Metallic ---------- */
-
-      --gold: #D5A74D;
-
-      --silver: #C6C6C6;
-      --light-silver: #CECECE;
-      --med-silver: #D5D5D5;
-      --bright-silver: #D8D8D8;
-
-      /* ---------- Neutral ---------- */
-
-      --gray: #999999;
-      --white: #F5F5F5;
       --vw-white: #FDFAF9;
       --vw-gray: #A8A8A8;
-
-      /* ---------- Theme ---------- */
-
-      --accent: var(--vw-blue);
-
+      --card-bg: rgba(51, 51, 51, 0.25);
     }
-
-    /*==================================================
-      LAYOUT
-    ==================================================*/
 
     body {
       margin: 0;
       font-family: Times New Roman, serif;
-      background: var(--bg-image) center / cover no-repeat fixed;
+      background: var(--bg-image) center/cover no-repeat fixed;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -73,7 +44,7 @@
     .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.40);
+      background: rgba(0,0,0,0.40);
     }
 
     .container {
@@ -92,20 +63,16 @@
       text-align: center;
     }
 
-    /*==================================================
-      TYPOGRAPHY
-    ==================================================*/
-
     h1 {
-      margin: 0;
-      font-size: 50px;
-      font-family: "Alex+Brush", cursive;
-      color: var(--med-silver);
+    margin: 0;
+    font-size: 50px;
+    font-family: "Alex Brush", cursive;
+    color: var(--med-silver);
 
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.18),
-        0 2px 3px rgba(0,0,0,.20);
-    }
+    text-shadow:
+        0 1px 0 rgba(255,255,255,0.18),
+        0 2px 3px rgba(0,0,0,0.20);
+}
 
     p {
       margin: 12px 0 18px;
@@ -113,12 +80,9 @@
       color: var(--bright-blue);
     }
 
-    /*==================================================
-      BUTTON
-    ==================================================*/
-
     .btn {
       display: inline-block;
+      width: auto;
       min-width: 155px;
       max-width: 70%;
       padding: 12px 22px;
@@ -127,28 +91,25 @@
       text-align: center;
       text-decoration: none;
       font-weight: 500;
+
+      background-color: var(--accent);
       color: var(--med-silver);
 
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(255,255,255,.12),
-          rgba(0,0,0,.18)
-        ),
-        var(--accent);
+      background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.12),
+        rgba(0, 0, 0, 0.18)
+      );
 
       border: 1px solid var(--med-silver);
       border-radius: 30px;
 
-      box-shadow:
-        0 2px 15px rgba(0,0,0,.30),
-        0 0 0 1px rgba(198,198,198,.35);
+      box-shadow: 
+        0 2px 15px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(198, 198, 198, .35);
     }
 
-    /*==================================================
-      CONTACT ICONS
-    ==================================================*/
-
+   
     .icon-row {
       display: flex;
       justify-content: space-around;
@@ -159,12 +120,10 @@
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: rgba(255,255,255,.18);
-
+      background: rgba(255,255,255,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-
       text-decoration: none;
       color: white;
       font-size: 20px;
@@ -181,80 +140,67 @@
     .email {
       color: var(--vw-gray);
     }
-
-    /*==================================================
-      FOOTER
-    ==================================================*/
-
+    
     .footer {
-      margin-top: 26px;
-      font-size: 16px;
+    margin-top: 26px;
+    font-size: 16px;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.2s ease;
     }
 
     .footer a {
-      color: var(--silver);
-      text-decoration: none;
-      transition: color .2s ease;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.2s ease;
     }
 
     .footer a:hover {
-      color: var(--vw-light-blue);
+    color: var(--vw-light-blue);
     }
-
+    
   </style>
 </head>
 
 <body>
 
-  <div class="overlay"></div>
+<div class="overlay"></div>
 
-  <div class="container">
+<div class="container">
+  <div class="card">
 
-    <div class="card">
+    <h1>Raymond</h1>
+    <p>Vehicle Delivery & Product Specialist</p>
 
-      <h1>Raymond</h1>
 
-      <p>Vehicle Delivery &amp; Product Specialist</p>
+    <!-- Add to Contacts (vCard download) -->
+    <a class="btn" href="contact.vcf" download>
+      Add to Contacts
+    </a>
 
-      <!-- Add to Contacts -->
+    <!-- Optional icons -->
+    <div class="icon-row">
+    <a class="icon phone" href="tel:7276312950">
+    <i class="fa-solid fa-phone"></i>
+    </a>
 
-      <a class="btn" href="contact.vcf" download>
-        Add to Contacts
-      </a>
+    <a class="icon message" href="sms:7276312950">
+    <i class="fa-solid fa-message"></i>
+    </a>
 
-      <!-- Contact Icons -->
-
-      <div class="icon-row">
-
-        <a class="icon phone" href="tel:7276312950">
-          <i class="fa-solid fa-phone"></i>
-        </a>
-
-        <a class="icon message" href="sms:7276312950">
-          <i class="fa-solid fa-message"></i>
-        </a>
-
-        <a class="icon email" href="mailto:raymondcjr.vw@gmail.com">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-
-      </div>
-
-      <!-- Footer -->
-
-      <div class="footer">
-
-        <a href="https://www.vw.com"
-           target="_blank"
-           rel="noopener noreferrer">
-          Volkswagen
-        </a>
-
-      </div>
-
+    <a class="icon email" href="mailto:raymondcjr.vw@gmail.com">
+    <i class="fa-solid fa-envelope"></i>
+    </a>
+</div>
+    
+    <div class="footer">
+  <a href="https://www.vw.com" target="_blank" rel="noopener noreferrer">
+    Volkswagen
+  </a>
     </div>
 
   </div>
+</div>
 
 </body>
 </html>
