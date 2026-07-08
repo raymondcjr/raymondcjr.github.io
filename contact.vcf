@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N:Castillo Jr;Raymond;;;
+FN:Raymond Castillo Jr
+
+ORG:Killeen Volkswagen
+TITLE:Volkswagen Delivery & Product Specialist
+
+TEL;TYPE=CELL:7276312950
+
+EMAIL:raymondcjr.vw@gmail.com
+
+URL:https://raymondcjr.github.io/
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+END:VCARD
