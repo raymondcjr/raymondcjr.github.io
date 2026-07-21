@@ -95,71 +95,68 @@
     font-weight: 500;
     color: var(--med-silver);
     background:
-    linear-gradient(
-        180deg,
-        #3A629C 0%,
-        #2C4C7F 28%,
-        #203763 62%,
-        #162542 100%
-    );
+        linear-gradient(
+            180deg,
+            #33558D 0%,
+            #294777 30%,
+            var(--vw-blue) 68%,
+            #17233F 100%
+        );
 
     border: 1px solid rgba(214,214,214,.18);
     border-radius: 30px;
 
     box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    inset 0 -2px 2px rgba(0,0,0,.20),
-    0 7px 17px rgba(0,0,0,.29);
-
+        inset 0 1px 0 rgba(255,255,255,.13),
+        inset 0 -1px 0 rgba(0,0,0,.15),
+        0 7px 17px rgba(0,0,0,.29);
 
     transition:
         box-shadow .25s ease,
         border-color .25s ease;
 }
 
-.btn::before{
+.btn::before {
     content:"";
     position:absolute;
-    left:9%;
-    right:9%;
-    top:4px;
-    height:36%;
+    left:8%;
+    right:8%;
+    top:3px;
+    height:42%;
     border-radius:999px;
     background:
         linear-gradient(
             to bottom,
-            rgba(255,255,255,.13) 0%,
-            rgba(255,255,255,.05) 38%,
-            rgba(255,255,255,.015) 70%,
+            rgba(255,255,255,.17) 0%,
+            rgba(255,255,255,.06) 45%,
             rgba(255,255,255,0) 100%
         );
 
-    filter:blur(10px);
+    filter:blur(8px);
     pointer-events:none;
-}
-
-
-.btn::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    border-radius:inherit;
-    pointer-events:none;
- 
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        inset 1px 0 0 rgba(255,255,255,.05),
-        inset -1px 0 0 rgba(255,255,255,.05),
-        inset 0 -1px 0 rgba(0,0,0,.42);
 
 }
 
-.btn:hover{
-    border-color:rgba(214,214,214,.22);
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+
     box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        inset 0 -2px 2px rgba(0,0,0,.25),
-        0 9px 20px rgba(0,0,0,.31);
+        inset 0 1px 0 rgba(255,255,255,.24),   /* top */
+        inset 1px 0 0 rgba(255,255,255,.09),   /* left */
+        inset -1px 0 0 rgba(255,255,255,.09),  /* right */
+        inset 0 -1px 0 rgba(0,0,0,.58);        /* bottom */
+}
+
+.btn:hover {
+    border-color: rgba(214,214,214,.48);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.22),
+        inset 0 -1px 0 rgba(0,0,0,.10),
+        0 10px 22px rgba(0,0,0,.33);
 
 }
 
