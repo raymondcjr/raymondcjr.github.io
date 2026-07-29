@@ -67,17 +67,28 @@
     
     h1 {
     margin: 0;
-    font-size: 52px;
+    font-size: 50px;
     font-family: "Alex Brush", cursive;
 
     font-weight: 400;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
 
-    color: var(--med-silver);
+    background: linear-gradient(
+        to bottom,
+        var(--bright-silver) 0%,
+        var(--med-silver) 34%,
+        var(--bright-blue) 50%,
+        var(--med-silver) 66%,
+        var(--bright-silver) 100%
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 
     text-shadow:
-        0 1px 0 rgba(255,255,255,.10),
         0 1px 2px rgba(0,0,0,.14);
 }
 
