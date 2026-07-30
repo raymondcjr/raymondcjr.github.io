@@ -237,7 +237,7 @@
 
 
     <!-- Add to Contacts (vCard download) -->
-    <a class="btn" href="contact.vcf" download>
+    <a class="btn" id="contactButton" href="contact.vcf" download>
       Add to Contacts
     </a>
 
@@ -265,5 +265,15 @@
   </div>
 </div>
 
+<script>
+const contactButton = document.getElementById("contactButton");
+
+contactButton.addEventListener("click", () => {
+    if ("vibrate" in navigator) {
+        navigator.vibrate(13);
+    }
+});
+</script>
+  
 </body>
 </html>
