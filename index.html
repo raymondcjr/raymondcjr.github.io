@@ -58,7 +58,8 @@
       padding: 20px;
       text-align: center;
     }
-
+    
+/* [CARD BACKGROUND] */
     .card {
       background: var(--card-bg);
       padding: 30px 24px 42px;
@@ -67,7 +68,7 @@
       text-align: center;
     }
     
-    
+/* [HEADING-NAME] */    
     h1 {
     margin: 0;
     font-size: 40px;
@@ -84,14 +85,12 @@
         0 1px 2px rgba(0,0,0,.14);
 }
 
-    /* p {
-      margin: 12px 0 18px;
-      opacity: 1;
-      color: var(--bright-blue);
-    } */
+   
 
+/* [BUTTON] */        
   .btn {
     position: relative;
+    isolation: isolate;
     overflow: hidden;
     display: inline-block;
     width: auto;
@@ -124,14 +123,68 @@
     0 7px 17px rgba(0,0,0,.29);
 
 
-    transition:
-        box-shadow .25s ease,
-        border-color .25s ease;
 }
 
+    .btn-label {
+    position: relative;
+    z-index: 4;
+}
+
+    .btn-energy {
+    position: absolute;
+    z-index: 1;
+    inset: 2px;
+    border-radius: inherit;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 58%,
+            rgba(112, 164, 224, 0.18) 0%,
+            rgba(76, 123, 184, 0.09) 38%,
+            rgba(46, 79, 130, 0.025) 64%,
+            rgba(46, 79, 130, 0) 78%
+        );
+
+    opacity: 0;
+
+    animation:
+        internal-energy-cycle 14s ease-in-out infinite;
+}
+
+    /* [BUTTON KEYFRAME] */
+    @keyframes internal-energy-cycle {
+    0%,
+    54% {
+        opacity: 0;
+    }
+
+    72% {
+        opacity: 0.22;
+    }
+
+    78% {
+        opacity: 0.22;
+    }
+
+    96%,
+    100% {
+        opacity: 0;
+    }
+    }
+
+/* [BUTTON MEDIA] */
+@media (prefers-reduced-motion: reduce) {
+    .btn-energy {
+        animation: none;
+        opacity: 0;
+    }
+}
+    
 .btn::before{
     content:"";
     position:absolute;
+    z-index: 2;
     left:9%;
     right:9%;
     top:4px;
@@ -154,6 +207,7 @@
 .btn::after{
     content:"";
     position:absolute;
+    z-index: 3;
     inset:0;
     border-radius:inherit;
     pointer-events:none;
@@ -164,17 +218,8 @@
 
 }
 
-/* .btn:hover{
-    border-color:rgba(214,214,214,.22);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        inset 0 -2px 2px rgba(0,0,0,.25),
-        0 9px 20px rgba(0,0,0,.31);
 
-} */
-
-
-   
+/* [ICONS] */   
     .icon-row {
       display: flex;
       justify-content: space-around;
@@ -206,6 +251,7 @@
       color: var(--manila);
     }
 
+/* [FOOTER-VW-SVG] */    
     .brand-footer {
     margin-top: 57px;
     display: flex;
@@ -222,23 +268,7 @@
     display: block;
 }
     
-    /* .footer {
-    margin-top: 26px;
-    font-size: 16px;
-    color: var(--silver);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    }
-
-    .footer a {
-    color: var(--bright-blue);
-    text-decoration: none;
-    transition: color 0.2s ease;
-    }
-
-    .footer a:hover {
-    color: var(--silver);
-    } */
+    
     
   </style>
 </head>
@@ -252,15 +282,15 @@
 
     
     <h1>Raymond</h1>
-    <!-- p>Vehicle Delivery & Product Specialist</p> -->
+    
 
-
-    <!-- Add to Contacts (vCard download) -->
+    <!-- ADD TO CONTACTS (vCARD DOWNLOAD) -->
     <a class="btn" id="contactButton" href="contact.vcf" download>
-      Add to Contacts
-    </a>
+      <span class="btn-energy" aria-hidden="true"></span>
+      <span class="btn-label">Add to Contacts</span>
+</a>
 
-    <!-- Optional icons -->
+    <!-- ICONS -->
     <div class="icon-row">
     <a class="icon phone" href="tel:7276312950">
     <i class="fa-solid fa-phone"></i>
@@ -289,15 +319,8 @@
     </a>
 </div>
     
-    <!--div class="footer">
-  <a href="https://www.vw.com" target="_blank" rel="noopener noreferrer">
-    Volkswagen
-  </a>
-    </div>
-
-  </div>
 </div>
--->
+</div>
     
 <script>
 const contactButton = document.getElementById("contactButton");
