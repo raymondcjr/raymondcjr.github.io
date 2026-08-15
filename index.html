@@ -11,11 +11,9 @@
   <!-- ===== FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
     href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
     rel="stylesheet">
-
   <link
     href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap"
     rel="stylesheet">
@@ -35,15 +33,23 @@
 
     :root {
       --bg-image: url("JettaGLIBG.jpg");
-
+      --accent: #1F2F57; /* VW deep blue */
+      --gold: #D5A74D;
+      --silver: #C6C6C6;
+      --med-silver: #D5D5D5;
+      --bright-silver: #D8D8D8;
+      --light-silver: #CECECE;
+      --gray-silver: #B0B0B0;
+      --gray: #999999;
+      --gray-med: #A0A0A0;
+      --manila: #E7DCB6;
+      --white: #F5F5F5;
       --vw-blue: #1F2F57;
       --vw-light-blue: #6091C3;
+      --bright-blue: #64A0F2;
       --vw-white: #FDFAF9;
-
-      --manila: #E7DCB6;
-
-      --page-overlay: rgba(0,0,0,0.25);
-      --card-bg: rgba(51,51,51,0.40);
+      --vw-gray: #A8A8A8;
+      --card-bg: rgba(51, 51, 51, 0.40);
     }
 
 
@@ -53,15 +59,11 @@
 
     body {
       margin: 0;
-
       min-height: 100vh;
-
       display: flex;
       justify-content: center;
       align-items: center;
-
       font-family: Times New Roman, serif;
-
       background:
         var(--bg-image)
         center / cover
@@ -77,9 +79,7 @@
     .overlay {
       position: absolute;
       inset: 0;
-
       background: var(--page-overlay);
-
       pointer-events: none;
     }
 
@@ -90,12 +90,9 @@
 
     .container {
       position: relative;
-
       width: 100%;
       max-width: 420px;
-
       padding: 20px;
-
       text-align: center;
     }
 
@@ -106,13 +103,9 @@
 
     .card {
       padding: 30px 24px 42px;
-
       background: var(--card-bg);
-
       border-radius: 18px;
-
       backdrop-filter: blur(10px);
-
       text-align: center;
     }
 
@@ -123,14 +116,11 @@
 
     .name {
       margin: 0;
-
       font-family: "Alex Brush", cursive;
       font-size: 40px;
       font-weight: 400;
-
       font-synthesis: none;
       text-rendering: optimizeLegibility;
-
       color: var(--vw-white);
 
       text-shadow:
@@ -145,18 +135,13 @@
 
     .btn {
       position: relative;
-
       isolation: isolate;
       overflow: hidden;
-
       display: inline-block;
-
       width: auto;
       min-width: 155px;
       max-width: 70%;
-
       padding: 12px 22px;
-
       margin: 14px auto;
       margin-top: 29px;
 
@@ -200,11 +185,8 @@
     .btn-energy {
       position: absolute;
       z-index: 1;
-
       inset: 2px;
-
       border-radius: inherit;
-
       pointer-events: none;
 
       background:
@@ -279,16 +261,12 @@
 
     .btn::before {
       content: "";
-
       position: absolute;
       z-index: 2;
-
       left: 9%;
       right: 9%;
       top: 4px;
-
       height: 36%;
-
       border-radius: 999px;
 
       background:
@@ -301,7 +279,6 @@
         );
 
       filter: blur(10px);
-
       pointer-events: none;
     }
 
@@ -310,16 +287,11 @@
 
     .btn::after {
       content: "";
-
       position: absolute;
       z-index: 3;
-
       inset: 0;
-
       border-radius: inherit;
-
       pointer-events: none;
-
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.18),
         inset 0 -1px 0 rgba(0,0,0,.42);
@@ -333,7 +305,6 @@
     .icon-row {
       display: flex;
       justify-content: space-around;
-
       margin-top: 18px;
     }
 
@@ -341,19 +312,13 @@
     .icon {
       width: 45px;
       height: 45px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       border-radius: 50%;
-
       background: rgba(255,255,255,0.19);
-
       text-decoration: none;
-
       color: white;
-
       font-size: 20px;
     }
 
@@ -379,7 +344,6 @@
 
     .brand-footer {
       margin-top: 57px;
-
       display: flex;
       justify-content: center;
     }
@@ -393,7 +357,6 @@
     .brand-signature {
       width: 24px;
       height: 24px;
-
       display: block;
     }
 
