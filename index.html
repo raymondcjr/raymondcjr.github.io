@@ -1,335 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Raymond | Volkswagen Specialist</title>
+
+
+  <!-- ===== FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
 
   <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
+    rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap"
+    rel="stylesheet">
+
+
+  <!-- ===== ICONS ===== -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
   <style>
+
+    /* =========================================================
+       PAGE VARIABLES
+       ========================================================= */
+
     :root {
       --bg-image: url("JettaGLIBG.jpg");
-      --accent: #1F2F57; /* VW deep blue */
-      --gold: #D5A74D;
-      --silver: #C6C6C6;
-      --med-silver: #D5D5D5;
-      --bright-silver: #D8D8D8;
-      --light-silver: #CECECE;
-      --gray-silver: #B0B0B0;
-      --gray: #999999;
-      --gray-med: #A0A0A0;
-      --manila: #E7DCB6;
-      --white: #F5F5F5;
+
       --vw-blue: #1F2F57;
       --vw-light-blue: #6091C3;
-      --bright-blue: #64A0F2;
       --vw-white: #FDFAF9;
-      --vw-gray: #A8A8A8;
-      --card-bg: rgba(51, 51, 51, 0.40);
+
+      --manila: #E7DCB6;
+
+      --page-overlay: rgba(0,0,0,0.25);
+      --card-bg: rgba(51,51,51,0.40);
     }
+
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
 
     body {
       margin: 0;
-      font-family: Times New Roman, serif;
-      background: var(--bg-image) center/cover no-repeat fixed;
+
+      min-height: 100vh;
+
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+
+      font-family: Times New Roman, serif;
+
+      background:
+        var(--bg-image)
+        center / cover
+        no-repeat
+        fixed;
     }
+
+
+    /* =========================================================
+       BACKGROUND OVERLAY
+       ========================================================= */
 
     .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.25);
+
+      background: var(--page-overlay);
+
+      pointer-events: none;
     }
+
+
+    /* =========================================================
+       PAGE CONTAINER
+       ========================================================= */
 
     .container {
       position: relative;
+
       width: 100%;
       max-width: 420px;
+
       padding: 20px;
+
       text-align: center;
     }
-    
-/* [CARD BACKGROUND] */
+
+
+    /* =========================================================
+       CARD
+       ========================================================= */
+
     .card {
-      background: var(--card-bg);
       padding: 30px 24px 42px;
+
+      background: var(--card-bg);
+
       border-radius: 18px;
+
       backdrop-filter: blur(10px);
+
       text-align: center;
     }
-    
-/* [HEADING-NAME] */    
-    h1 {
-    margin: 0;
-    font-size: 40px;
-    font-family: "Alex Brush", cursive;
 
-    font-weight: 400;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
 
-    color: var(--vw-white);
+    /* =========================================================
+       IDENTITY
+       ========================================================= */
 
-    text-shadow:
+    .name {
+      margin: 0;
+
+      font-family: "Alex Brush", cursive;
+      font-size: 40px;
+      font-weight: 400;
+
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+
+      color: var(--vw-white);
+
+      text-shadow:
         0 1px 0 rgba(255,255,255,.10),
         0 1px 2px rgba(0,0,0,.14);
-}
-
-   
-
-/* [BUTTON] */        
-  .btn {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    display: inline-block;
-    width: auto;
-    min-width: 155px;
-    max-width: 70%;
-    padding: 12px 22px;
-    margin: 14px auto;
-    margin-top: 29px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 500;
-    color: var(--vw-white);
-    background:
-    linear-gradient(
-        180deg,
-        #416BA8 0%,
-        #31558B 26%,
-        #223C69 60%,
-        #162542 100%
-    );
-
-    /* border: 1px solid transparent; */
-    /* border-top-color: rgba(214,214,214,.18); */
-    border: none;
-    border-radius: 30px;
-
-    box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    inset 0 -2px 2px rgba(0,0,0,.20),
-    0 7px 17px rgba(0,0,0,.29);
+    }
 
 
-}
+    /* =========================================================
+       PRIMARY ACTION — ADD TO CONTACTS
+       ========================================================= */
+
+    .btn {
+      position: relative;
+
+      isolation: isolate;
+      overflow: hidden;
+
+      display: inline-block;
+
+      width: auto;
+      min-width: 155px;
+      max-width: 70%;
+
+      padding: 12px 22px;
+
+      margin: 14px auto;
+      margin-top: 29px;
+
+      /* border: 1px solid transparent; */
+      /* border-top-color: rgba(214,214,214,.18); */
+      border: none;
+      border-radius: 30px;
+
+      text-align: center;
+      text-decoration: none;
+      font-weight: 500;
+
+      color: var(--vw-white);
+
+      background:
+        linear-gradient(
+          180deg,
+          #416BA8 0%,
+          #31558B 26%,
+          #223C69 60%,
+          #162542 100%
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        inset 0 -2px 2px rgba(0,0,0,.20),
+        0 7px 17px rgba(0,0,0,.29);
+    }
+
+
+    /* BUTTON LABEL */
 
     .btn-label {
-    position: relative;
-    z-index: 4;
-}
-
-    .btn-energy {
-    position: absolute;
-    z-index: 1;
-    inset: 2px;
-    border-radius: inherit;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 58%,
-            rgba(126, 173, 227, 0.30) 0%,
-            rgba(94, 136, 191, 0.15) 38%,
-            rgba(67, 97, 143, 0.045) 64%,
-            rgba(67, 97, 143, 0) 78%
-        );
-
-    transform: scale(1.20, 1.10);
-    transform-origin: 50% 58%;
-
-    opacity: 0;
-
-    animation:
-        internal-energy-cycle 14s ease-in-out infinite;
-}
-
-    /* [BUTTON KEYFRAME] */
-    @keyframes internal-energy-cycle {
-  0%   { opacity: 0; }
-  20%  { opacity: 0; }
-  25%  { opacity: .04; }
-  30%  { opacity: .09; }
-  35%  { opacity: .13; }
-  40%  { opacity: .18; }
-  60%  { opacity: .50; }
-  72%  { opacity: .50; }
-  92%  { opacity: .04; }
-  100% { opacity: 0; }
-}
-
-
-    
-
-/* [BUTTON MEDIA] */
-@media (prefers-reduced-motion: reduce) {
-    .btn-energy {
-        animation: none;
-        opacity: 0;
+      position: relative;
+      z-index: 4;
     }
-}
-    
-.btn::before{
-    content:"";
-    position:absolute;
-    z-index: 2;
-    left:9%;
-    right:9%;
-    top:4px;
-    height:36%;
-    border-radius:999px;
-    background:
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,.13) 0%,
-            rgba(255,255,255,.05) 38%,
-            rgba(255,255,255,.015) 70%,
-            rgba(255,255,255,0) 100%
+
+
+    /* BUTTON INTERNAL ENERGY */
+
+    .btn-energy {
+      position: absolute;
+      z-index: 1;
+
+      inset: 2px;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 58%,
+          rgba(112,164,224,0.30) 0%,
+          rgba(76,123,184,0.15) 38%,
+          rgba(46,79,130,0.045) 64%,
+          rgba(46,79,130,0) 78%
         );
 
-    filter:blur(10px);
-    pointer-events:none;
-}
+      transform: scale(1.20,1.10);
+      transform-origin: 50% 58%;
+
+      opacity: 0;
+
+      animation:
+        internal-energy-cycle
+        14s
+        ease-in-out
+        infinite;
+    }
 
 
-.btn::after{
-    content:"";
-    position:absolute;
-    z-index: 3;
-    inset:0;
-    border-radius:inherit;
-    pointer-events:none;
- 
-    box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.18),
-    inset 0 -1px 0 rgba(0,0,0,.42);
+    /* BUTTON ENERGY ANIMATION */
 
-}
+    @keyframes internal-energy-cycle {
+
+      0% {
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0;
+      }
+
+      25% {
+        opacity: .04;
+      }
+
+      30% {
+        opacity: .09;
+      }
+
+      35% {
+        opacity: .13;
+      }
+
+      40% {
+        opacity: .18;
+      }
+
+      60% {
+        opacity: .50;
+      }
+
+      72% {
+        opacity: .50;
+      }
+
+      92% {
+        opacity: .04;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
 
 
-/* [ICONS] */   
+    /* BUTTON UPPER HIGHLIGHT */
+
+    .btn::before {
+      content: "";
+
+      position: absolute;
+      z-index: 2;
+
+      left: 9%;
+      right: 9%;
+      top: 4px;
+
+      height: 36%;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,.13) 0%,
+          rgba(255,255,255,.05) 38%,
+          rgba(255,255,255,.015) 70%,
+          rgba(255,255,255,0) 100%
+        );
+
+      filter: blur(10px);
+
+      pointer-events: none;
+    }
+
+
+    /* BUTTON EDGE TREATMENT */
+
+    .btn::after {
+      content: "";
+
+      position: absolute;
+      z-index: 3;
+
+      inset: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.42);
+    }
+
+
+    /* =========================================================
+       CONTACT ACTIONS
+       ========================================================= */
+
     .icon-row {
       display: flex;
       justify-content: space-around;
+
       margin-top: 18px;
     }
+
 
     .icon {
       width: 45px;
       height: 45px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.19);
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.19);
+
       text-decoration: none;
+
       color: white;
+
       font-size: 20px;
     }
+
 
     .phone {
       color: #25D366;
     }
 
+
     .message {
       color: var(--vw-light-blue);
     }
+
 
     .email {
       color: var(--manila);
     }
 
-/* [FOOTER-VW-SVG] */    
+
+    /* =========================================================
+       BRAND SIGNATURE
+       ========================================================= */
+
     .brand-footer {
-    margin-top: 57px;
-    display: flex;
-    justify-content: center;
-}
+      margin-top: 57px;
 
-.brand-footer a {
-    display: inline-flex;
-}
+      display: flex;
+      justify-content: center;
+    }
 
-.brand-signature {
-    width: 24px;
-    height: 24px;
-    display: block;
-}
-    
-    
-    
+
+    .brand-footer a {
+      display: inline-flex;
+    }
+
+
+    .brand-signature {
+      width: 24px;
+      height: 24px;
+
+      display: block;
+    }
+
+
+    /* =========================================================
+       ACCESSIBILITY — REDUCED MOTION
+       ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .btn-energy {
+        animation: none;
+        opacity: 0;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
-<div class="overlay"></div>
+  <!-- BACKGROUND OVERLAY -->
+  <div class="overlay"></div>
 
-<div class="container">
-  <div class="card">
 
-    
-    <h1>Raymond</h1>
-    
+  <!-- PAGE CONTENT -->
+  <main class="container">
 
-    <!-- ADD TO CONTACTS (vCARD DOWNLOAD) -->
-    <a class="btn" id="contactButton" href="contact.vcf" download>
-      <span class="btn-energy" aria-hidden="true"></span>
-      <span class="btn-label">Add to Contacts</span>
-</a>
+    <div class="card">
 
-    <!-- ICONS -->
-    <div class="icon-row">
-    <a class="icon phone" href="tel:7276312950">
-    <i class="fa-solid fa-phone"></i>
-    </a>
 
-    <a class="icon message" href="sms:7276312950">
-    <i class="fa-solid fa-message"></i>
-    </a>
+      <!-- ===== IDENTITY ===== -->
 
-    <a class="icon email" href="mailto:raymondcjr.vw@gmail.com">
-    <i class="fa-solid fa-envelope"></i>
-    </a>
-</div>
+      <h1 class="name">Raymond</h1>
 
-    <div class="brand-footer">
-    <a href="https://www.vw.com"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Visit the official Volkswagen website">
 
-        <img
-          class="brand-signature"
-          src="VW-logo-white.svg"
-          alt="Volkswagen">
+      <!-- ===== PRIMARY ACTION ===== -->
 
-    </a>
-</div>
-    
-</div>
-</div>
-    
-<script>
-const contactButton = document.getElementById("contactButton");
+      <a
+        class="btn"
+        id="contactButton"
+        href="contact.vcf"
+        download>
 
-contactButton.addEventListener("click", () => {
-    if ("vibrate" in navigator) {
+        <span
+          class="btn-energy"
+          aria-hidden="true">
+        </span>
+
+        <span class="btn-label">
+          Add to Contacts
+        </span>
+
+      </a>
+
+
+      <!-- ===== CONTACT ACTIONS ===== -->
+
+      <div class="icon-row">
+
+        <a
+          class="icon phone"
+          href="tel:7276312950"
+          aria-label="Call Raymond">
+
+          <i
+            class="fa-solid fa-phone"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+
+        <a
+          class="icon message"
+          href="sms:7276312950"
+          aria-label="Text Raymond">
+
+          <i
+            class="fa-solid fa-message"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+
+        <a
+          class="icon email"
+          href="mailto:raymondcjr.vw@gmail.com"
+          aria-label="Email Raymond">
+
+          <i
+            class="fa-solid fa-envelope"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+      </div>
+
+
+      <!-- ===== BRAND SIGNATURE ===== -->
+
+      <div class="brand-footer">
+
+        <a
+          href="https://www.vw.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit the official Volkswagen website">
+
+          <img
+            class="brand-signature"
+            src="VW-logo-white.svg"
+            alt="Volkswagen">
+
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- ===== CONTACT BUTTON HAPTIC FEEDBACK ===== -->
+
+  <script>
+
+    const contactButton =
+      document.getElementById("contactButton");
+
+    contactButton.addEventListener("click", () => {
+
+      if ("vibrate" in navigator) {
         navigator.vibrate(11);
-    }
-});
-</script>
-  
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
