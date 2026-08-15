@@ -7,7 +7,6 @@
 
   <title>Raymond | Volkswagen Specialist</title>
 
-
   <!-- ===== FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,22 +17,15 @@
     href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap"
     rel="stylesheet">
 
-
   <!-- ===== ICONS ===== -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
   <style>
-
-    /* =========================================================
-       PAGE VARIABLES
-       ========================================================= */
-
+    /* = PAGE VARIABLES = */
     :root {
       --bg-image: url("JettaGLIBG.jpg");
-      --accent: #1F2F57; /* VW deep blue */
       --gold: #D5A74D;
       --silver: #C6C6C6;
       --med-silver: #D5D5D5;
@@ -53,11 +45,7 @@
       --page-overlay: rgba(0, 0, 0, 0.25);
     }
 
-
-    /* =========================================================
-       PAGE
-       ========================================================= */
-
+    /* = PAGE = */
     body {
       margin: 0;
       min-height: 100vh;
@@ -72,11 +60,7 @@
         fixed;
     }
 
-
-    /* =========================================================
-       BACKGROUND OVERLAY
-       ========================================================= */
-
+    /* = BACKGROUND OVERLAY = */
     .overlay {
       position: absolute;
       inset: 0;
@@ -84,11 +68,7 @@
       pointer-events: none;
     }
 
-
-    /* =========================================================
-       PAGE CONTAINER
-       ========================================================= */
-
+    /* = PAGE CONTAINER = */
     .container {
       position: relative;
       width: 100%;
@@ -98,10 +78,7 @@
     }
 
 
-    /* =========================================================
-       CARD
-       ========================================================= */
-
+    /* = CARD = */
     .card {
       padding: 30px 24px 42px;
       background: var(--card-bg);
@@ -111,10 +88,7 @@
     }
 
 
-    /* =========================================================
-       IDENTITY
-       ========================================================= */
-
+    /* = IDENTITY = */
     .name {
       margin: 0;
       font-family: "Alex Brush", cursive;
@@ -129,11 +103,7 @@
         0 1px 2px rgba(0,0,0,.14);
     }
 
-
-    /* =========================================================
-       PRIMARY ACTION — ADD TO CONTACTS
-       ========================================================= */
-
+    /* = PRIMARY ACTION — ADD TO CONTACTS = */
     .btn {
       position: relative;
       isolation: isolate;
@@ -150,11 +120,9 @@
       /* border-top-color: rgba(214,214,214,.18); */
       border: none;
       border-radius: 30px;
-
       text-align: center;
       text-decoration: none;
       font-weight: 500;
-
       color: var(--vw-white);
 
       background:
@@ -172,17 +140,13 @@
         0 7px 17px rgba(0,0,0,.29);
     }
 
-
     /* BUTTON LABEL */
-
     .btn-label {
       position: relative;
       z-index: 4;
     }
 
-
     /* BUTTON INTERNAL ENERGY */
-
     .btn-energy {
       position: absolute;
       z-index: 1;
@@ -201,9 +165,7 @@
 
       transform: scale(1.20,1.10);
       transform-origin: 50% 58%;
-
       opacity: 0;
-
       animation:
         internal-energy-cycle
         14s
@@ -211,55 +173,22 @@
         infinite;
     }
 
-
     /* BUTTON ENERGY ANIMATION */
-
     @keyframes internal-energy-cycle {
-
-      0% {
-        opacity: 0;
-      }
-
-      20% {
-        opacity: 0;
-      }
-
-      25% {
-        opacity: .04;
-      }
-
-      30% {
-        opacity: .09;
-      }
-
-      35% {
-        opacity: .13;
-      }
-
-      40% {
-        opacity: .18;
-      }
-
-      60% {
-        opacity: .50;
-      }
-
-      72% {
-        opacity: .50;
-      }
-
-      92% {
-        opacity: .04;
-      }
-
-      100% {
-        opacity: 0;
-      }
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  25% { opacity: .04; }
+  30% { opacity: .09; }
+  35% { opacity: .13; }
+  40% { opacity: .18; }
+  60% { opacity: .50; }
+  72% { opacity: .50; }
+  92% { opacity: .04; }
+  100% { opacity: 0; }
+}
     }
 
-
     /* BUTTON UPPER HIGHLIGHT */
-
     .btn::before {
       content: "";
       position: absolute;
@@ -283,9 +212,7 @@
       pointer-events: none;
     }
 
-
     /* BUTTON EDGE TREATMENT */
-
     .btn::after {
       content: "";
       position: absolute;
@@ -298,17 +225,12 @@
         inset 0 -1px 0 rgba(0,0,0,.42);
     }
 
-
-    /* =========================================================
-       CONTACT ACTIONS
-       ========================================================= */
-
+    /* = CONTACT ACTIONS = */
     .icon-row {
       display: flex;
       justify-content: space-around;
       margin-top: 18px;
     }
-
 
     .icon {
       width: 45px;
@@ -323,37 +245,28 @@
       font-size: 20px;
     }
 
-
     .phone {
       color: #25D366;
     }
-
 
     .message {
       color: var(--vw-light-blue);
     }
 
-
     .email {
       color: var(--manila);
     }
 
-
-    /* =========================================================
-       BRAND SIGNATURE
-       ========================================================= */
-
+    /* = BRAND SIGNATURE = */
     .brand-footer {
       margin-top: 57px;
       display: flex;
       justify-content: center;
     }
 
-
     .brand-footer a {
       display: inline-flex;
     }
-
 
     .brand-signature {
       width: 24px;
@@ -361,43 +274,30 @@
       display: block;
     }
 
-
-    /* =========================================================
-       ACCESSIBILITY — REDUCED MOTION
-       ========================================================= */
-
+    /* = ACCESSIBILITY — REDUCED MOTION = */
     @media (prefers-reduced-motion: reduce) {
 
       .btn-energy {
         animation: none;
         opacity: 0;
       }
-
     }
 
   </style>
 </head>
 
-
 <body>
-
   <!-- BACKGROUND OVERLAY -->
   <div class="overlay"></div>
 
-
   <!-- PAGE CONTENT -->
   <main class="container">
-
     <div class="card">
 
-
-      <!-- ===== IDENTITY ===== -->
-
+      <!-- = IDENTITY = -->
       <h1 class="name">Raymond</h1>
 
-
-      <!-- ===== PRIMARY ACTION ===== -->
-
+      <!-- = PRIMARY ACTION = -->
       <a
         class="btn"
         id="contactButton"
@@ -415,9 +315,7 @@
 
       </a>
 
-
-      <!-- ===== CONTACT ACTIONS ===== -->
-
+      <!-- = CONTACT ACTIONS = -->
       <div class="icon-row">
 
         <a
@@ -432,7 +330,6 @@
 
         </a>
 
-
         <a
           class="icon message"
           href="sms:7276312950"
@@ -444,7 +341,6 @@
           </i>
 
         </a>
-
 
         <a
           class="icon email"
@@ -460,9 +356,7 @@
 
       </div>
 
-
-      <!-- ===== BRAND SIGNATURE ===== -->
-
+      <!-- = BRAND SIGNATURE = -->
       <div class="brand-footer">
 
         <a
@@ -480,13 +374,11 @@
 
       </div>
 
-
     </div>
 
   </main>
 
-
-  <!-- ===== CONTACT BUTTON HAPTIC FEEDBACK ===== -->
+  <!-- = CONTACT BUTTON HAPTIC FEEDBACK = -->
 
   <script>
 
