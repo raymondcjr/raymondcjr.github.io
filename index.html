@@ -77,7 +77,6 @@
       text-align: center;
     }
 
-
     /* = CARD = */
     .card {
       padding: 30px 24px 42px;
@@ -86,7 +85,6 @@
       backdrop-filter: blur(10px);
       text-align: center;
     }
-
 
     /* = IDENTITY = */
     .name {
@@ -173,22 +171,22 @@
         infinite;
     }
 
-   /* BUTTON ENERGY ANIMATION */
+    /* BUTTON ENERGY ANIMATION */
     @keyframes internal-energy-cycle {
-        0%      { opacity:0; }
-        8.8%    { opacity:0; }
-        13.2%   { opacity:.059; }
-        17.6%   { opacity:.128; }
-        22%     { opacity:.186; }
-        26.4%   { opacity:.258; }
-        48.4%   { opacity:.755; }
-        65.12%  { opacity:.755; }      
-        70.4%   { opacity:.542; }
-        75.68%  { opacity:.343; }
-        80.96%  { opacity:.173; }
-        85.36%  { opacity:.059; }
-        88%     { opacity:0; }
-        100%    { opacity:0; }
+      0%      { opacity:0; }
+      8.8%    { opacity:0; }
+      13.2%   { opacity:.059; }
+      17.6%   { opacity:.128; }
+      22%     { opacity:.186; }
+      26.4%   { opacity:.258; }
+      48.4%   { opacity:.755; }
+      65.12%  { opacity:.755; }      
+      70.4%   { opacity:.542; }
+      75.68%  { opacity:.343; }
+      80.96%  { opacity:.173; }
+      85.36%  { opacity:.059; }
+      88%     { opacity:0; }
+      100%    { opacity:0; }
     } 
     
     /* BUTTON UPPER MATERIAL RESPONSE */
@@ -277,6 +275,114 @@
       display: block;
     }
 
+    /* = PAGE DISCLAIMER = */
+    .disclaimer-button {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      z-index: 10;
+
+      width: 28px;
+      height: 28px;
+      padding: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+
+      background: rgba(36,56,95,.72);
+      color: var(--echo-soft-white);
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.28);
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      cursor: pointer;
+    }
+
+    .disclaimer-button i {
+      font-size: 12px;
+    }
+
+    .disclaimer-button:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 2px;
+    }
+
+    .disclaimer-panel {
+      position: fixed;
+      right: 10px;
+      bottom: 48px;
+      z-index: 11;
+
+      width: min(320px, calc(100vw - 20px));
+      box-sizing: border-box;
+
+      padding: 16px 38px 16px 16px;
+
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+
+      background: rgba(36,56,95,.96);
+      color: var(--echo-soft-white);
+
+      text-align: left;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.38);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .disclaimer-panel[hidden] {
+      display: none;
+    }
+
+    .disclaimer-panel h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .disclaimer-panel p {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(247,245,242,.88);
+    }
+
+    .disclaimer-close {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+
+      width: 26px;
+      height: 26px;
+      padding: 0;
+
+      border: 0;
+      background: transparent;
+      color: var(--echo-soft-white);
+
+      font-size: 20px;
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+    .disclaimer-close:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 1px;
+    }
+
     /* = ACCESSIBILITY — REDUCED MOTION = */
     @media (prefers-reduced-motion: reduce) {
 
@@ -290,11 +396,13 @@
 </head>
 
 <body>
-  <!-- BACKGROUND OVERLAY -->
+
+  <!-- = BACKGROUND OVERLAY = -->
   <div class="overlay"></div>
 
-  <!-- PAGE CONTENT -->
+  <!-- = PAGE CONTENT = -->
   <main class="container">
+
     <div class="card">
 
       <!-- = IDENTITY = -->
@@ -381,10 +489,56 @@
 
   </main>
 
-  <!-- = CONTACT BUTTON HAPTIC FEEDBACK = -->
+  <!-- = PAGE DISCLAIMER CONTROL = -->
+  <button
+    class="disclaimer-button"
+    id="disclaimerButton"
+    type="button"
+    aria-label="Page information and disclaimer"
+    aria-expanded="false"
+    aria-controls="disclaimerPanel">
 
+    <i
+      class="fa-solid fa-info"
+      aria-hidden="true">
+    </i>
+
+  </button>
+
+  <!-- = PAGE DISCLAIMER PANEL = -->
+  <aside
+    class="disclaimer-panel"
+    id="disclaimerPanel"
+    role="dialog"
+    aria-labelledby="disclaimerTitle"
+    hidden>
+
+    <button
+      class="disclaimer-close"
+      id="disclaimerClose"
+      type="button"
+      aria-label="Close disclaimer">
+      &times;
+    </button>
+
+    <h2 id="disclaimerTitle">
+      Independent Salesperson Page
+    </h2>
+
+    <p>
+      This independently created and maintained personal contact page is for a
+      Killeen Volkswagen sales professional and is not an official website of
+      Killeen Volkswagen or Volkswagen of America. Volkswagen trademarks and
+      logos are the property of their respective owners. The Volkswagen link
+      directs to the official Volkswagen website.
+    </p>
+
+  </aside>
+
+  <!-- = PAGE INTERACTIONS = -->
   <script>
 
+    /* CONTACT BUTTON HAPTIC FEEDBACK */
     const contactButton =
       document.getElementById("contactButton");
 
@@ -392,6 +546,90 @@
 
       if ("vibrate" in navigator) {
         navigator.vibrate(11);
+      }
+
+    });
+
+
+    /* PAGE DISCLAIMER */
+    const disclaimerButton =
+      document.getElementById("disclaimerButton");
+
+    const disclaimerPanel =
+      document.getElementById("disclaimerPanel");
+
+    const disclaimerClose =
+      document.getElementById("disclaimerClose");
+
+
+    function openDisclaimer() {
+
+      disclaimerPanel.hidden = false;
+
+      disclaimerButton.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      disclaimerClose.focus();
+
+    }
+
+
+    function closeDisclaimer(returnFocus = true) {
+
+      disclaimerPanel.hidden = true;
+
+      disclaimerButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      if (returnFocus) {
+        disclaimerButton.focus();
+      }
+
+    }
+
+
+    disclaimerButton.addEventListener("click", () => {
+
+      if (disclaimerPanel.hidden) {
+        openDisclaimer();
+      } else {
+        closeDisclaimer();
+      }
+
+    });
+
+
+    disclaimerClose.addEventListener("click", () => {
+
+      closeDisclaimer();
+
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Escape" &&
+        !disclaimerPanel.hidden
+      ) {
+        closeDisclaimer();
+      }
+
+    });
+
+
+    document.addEventListener("click", (event) => {
+
+      if (
+        !disclaimerPanel.hidden &&
+        !disclaimerPanel.contains(event.target) &&
+        !disclaimerButton.contains(event.target)
+      ) {
+        closeDisclaimer(false);
       }
 
     });
