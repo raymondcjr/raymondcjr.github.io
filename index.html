@@ -263,6 +263,21 @@
     }
 
 
+    /* = PRIMARY ACTION — INTENT RESOLUTION = */
+    /*
+      Idle: intrigue.
+      Intent: clarity.
+
+      The normal phasing cycle remains the idle state.
+      When the visitor shows intent, the existing icon and energy
+      resolve to their established high-authority states.
+    */
+    .btn-label i,
+    .btn-energy {
+      transition: opacity 180ms ease-out;
+    }
+
+
     /* = CONTACT ACTIONS = */
     .icon-row {
       display: flex;
@@ -591,6 +606,261 @@
     /* CONTACT BUTTON HAPTIC FEEDBACK */
     const contactButton =
       document.getElementById("contactButton");
+
+
+    /* PRIMARY ACTION INTENT RESOLUTION */
+    const contactIcon =
+      contactButton.querySelector(".btn-label i");
+
+    const contactEnergy =
+      contactButton.querySelector(".btn-energy");
+
+    const fineHoverQuery =
+      window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    const reducedMotionQuery =
+      window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    let hoverIntent = false;
+    let focusIntent = false;
+    let pressIntent = false;
+    let releaseTimer = null;
+
+
+    function setIntentTransition(duration, easing) {
+
+      contactIcon.style.transition =
+        `opacity ${duration}ms ${easing}`;
+
+      contactEnergy.style.transition =
+        `opacity ${duration}ms ${easing}`;
+    }
+
+
+    function captureCurrentIntentState() {
+
+      const iconOpacity =
+        getComputedStyle(contactIcon).opacity;
+
+      const energyOpacity =
+        getComputedStyle(contactEnergy).opacity;
+
+      contactIcon.style.animation = "none";
+      contactEnergy.style.animation = "none";
+
+      contactIcon.style.transition = "none";
+      contactEnergy.style.transition = "none";
+
+      contactIcon.style.opacity = iconOpacity;
+      contactEnergy.style.opacity = energyOpacity;
+    }
+
+
+    function resolveContactIntent() {
+
+      if (reducedMotionQuery.matches) {
+        return;
+      }
+
+      clearTimeout(releaseTimer);
+
+      captureCurrentIntentState();
+
+      requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+          setIntentTransition(180, "ease-out");
+
+          contactIcon.style.opacity = ".90";
+          contactEnergy.style.opacity = ".755";
+
+        });
+
+      });
+
+    }
+
+
+    function releaseContactIntent() {
+
+      if (reducedMotionQuery.matches) {
+        return;
+      }
+
+      clearTimeout(releaseTimer);
+
+      captureCurrentIntentState();
+
+      requestAnimationFrame(() => {
+
+        requestAnimationFrame(() => {
+
+          setIntentTransition(240, "ease-in-out");
+
+          contactIcon.style.opacity = "0";
+          contactEnergy.style.opacity = "0";
+
+          releaseTimer = setTimeout(() => {
+
+            contactIcon.style.removeProperty("animation");
+            contactEnergy.style.removeProperty("animation");
+
+            contactIcon.style.removeProperty("transition");
+            contactEnergy.style.removeProperty("transition");
+
+            contactIcon.style.removeProperty("opacity");
+            contactEnergy.style.removeProperty("opacity");
+
+          }, 260);
+
+        });
+
+      });
+
+    }
+
+
+    function updateContactIntent() {
+
+      if (
+        hoverIntent ||
+        focusIntent ||
+        pressIntent
+      ) {
+        resolveContactIntent();
+      } else {
+        releaseContactIntent();
+      }
+
+    }
+
+
+    contactButton.addEventListener(
+      "pointerenter",
+      (event) => {
+
+        if (
+          event.pointerType === "mouse" &&
+          fineHoverQuery.matches
+        ) {
+          hoverIntent = true;
+          updateContactIntent();
+        }
+
+      }
+    );
+
+
+    contactButton.addEventListener(
+      "pointerleave",
+      (event) => {
+
+        if (
+          event.pointerType === "mouse" &&
+          fineHoverQuery.matches
+        ) {
+          hoverIntent = false;
+          updateContactIntent();
+        }
+
+      }
+    );
+
+
+    contactButton.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        if (
+          event.pointerType !== "mouse" ||
+          !fineHoverQuery.matches
+        ) {
+          pressIntent = true;
+          updateContactIntent();
+        }
+
+      }
+    );
+
+
+    function releasePressIntent() {
+
+      if (!pressIntent) {
+        return;
+      }
+
+      setTimeout(() => {
+
+        pressIntent = false;
+        updateContactIntent();
+
+      }, 120);
+
+    }
+
+
+    contactButton.addEventListener(
+      "pointerup",
+      releasePressIntent
+    );
+
+    contactButton.addEventListener(
+      "pointercancel",
+      releasePressIntent
+    );
+
+
+    contactButton.addEventListener(
+      "focus",
+      () => {
+
+        requestAnimationFrame(() => {
+
+          focusIntent =
+            contactButton.matches(":focus-visible");
+
+          updateContactIntent();
+
+        });
+
+      }
+    );
+
+
+    contactButton.addEventListener(
+      "blur",
+      () => {
+
+        focusIntent = false;
+        updateContactIntent();
+
+      }
+    );
+
+
+    reducedMotionQuery.addEventListener(
+      "change",
+      () => {
+
+        clearTimeout(releaseTimer);
+
+        hoverIntent = false;
+        focusIntent = false;
+        pressIntent = false;
+
+        contactIcon.style.removeProperty("animation");
+        contactEnergy.style.removeProperty("animation");
+
+        contactIcon.style.removeProperty("transition");
+        contactEnergy.style.removeProperty("transition");
+
+        contactIcon.style.removeProperty("opacity");
+        contactEnergy.style.removeProperty("opacity");
+
+      }
+    );
+
 
     contactButton.addEventListener("click", () => {
 
