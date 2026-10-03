@@ -268,14 +268,10 @@
       Idle: intrigue.
       Intent: clarity.
 
-      The normal phasing cycle remains the idle state.
-      When the visitor shows intent, the existing icon and energy
-      resolve to their established high-authority states.
+      Interaction temporarily pauses the existing icon and LBB cycles.
+      On release, each layer returns to the exact interrupted state
+      before the original cycles resume from the same phase.
     */
-    .btn-label i,
-    .btn-energy {
-      transition: opacity 180ms ease-out;
-    }
 
 
     /* = CONTACT ACTIONS = */
@@ -624,6 +620,10 @@
     let hoverIntent = false;
     let focusIntent = false;
     let pressIntent = false;
+
+    let intentActive = false;
+    let interruptedIconOpacity = null;
+    let interruptedEnergyOpacity = null;
     let releaseTimer = null;
 
 
@@ -637,22 +637,49 @@
     }
 
 
-    function captureCurrentIntentState() {
+    function setIntentOpacity(element, value) {
 
-      const iconOpacity =
+      /*
+        !important is intentional here:
+        a running/paused CSS animation normally owns opacity.
+        This lets the temporary intent state sit above the paused
+        animation without destroying or restarting that animation.
+      */
+      element.style.setProperty(
+        "opacity",
+        value,
+        "important"
+      );
+    }
+
+
+    function pauseIntentCycles() {
+
+      contactIcon.style.animationPlayState = "paused";
+      contactEnergy.style.animationPlayState = "paused";
+
+      /*
+        Read the exact visual state after pausing.
+        These are the states we will return to before resuming.
+      */
+      interruptedIconOpacity =
         getComputedStyle(contactIcon).opacity;
 
-      const energyOpacity =
+      interruptedEnergyOpacity =
         getComputedStyle(contactEnergy).opacity;
-
-      contactIcon.style.animation = "none";
-      contactEnergy.style.animation = "none";
 
       contactIcon.style.transition = "none";
       contactEnergy.style.transition = "none";
 
-      contactIcon.style.opacity = iconOpacity;
-      contactEnergy.style.opacity = energyOpacity;
+      setIntentOpacity(
+        contactIcon,
+        interruptedIconOpacity
+      );
+
+      setIntentOpacity(
+        contactEnergy,
+        interruptedEnergyOpacity
+      );
     }
 
 
@@ -664,16 +691,31 @@
 
       clearTimeout(releaseTimer);
 
-      captureCurrentIntentState();
+      if (!intentActive) {
+
+        intentActive = true;
+        pauseIntentCycles();
+
+      }
 
       requestAnimationFrame(() => {
 
         requestAnimationFrame(() => {
 
-          setIntentTransition(180, "ease-out");
+          setIntentTransition(
+            180,
+            "ease-out"
+          );
 
-          contactIcon.style.opacity = ".90";
-          contactEnergy.style.opacity = ".755";
+          setIntentOpacity(
+            contactIcon,
+            ".90"
+          );
+
+          setIntentOpacity(
+            contactEnergy,
+            ".755"
+          );
 
         });
 
@@ -684,39 +726,65 @@
 
     function releaseContactIntent() {
 
-      if (reducedMotionQuery.matches) {
+      if (
+        reducedMotionQuery.matches ||
+        !intentActive
+      ) {
         return;
       }
 
       clearTimeout(releaseTimer);
 
-      captureCurrentIntentState();
+      /*
+        Return to the exact point at which the normal cycle
+        was interrupted. The animations remain paused during
+        this transition.
+      */
+      setIntentTransition(
+        240,
+        "ease-in-out"
+      );
 
-      requestAnimationFrame(() => {
+      setIntentOpacity(
+        contactIcon,
+        interruptedIconOpacity
+      );
 
-        requestAnimationFrame(() => {
+      setIntentOpacity(
+        contactEnergy,
+        interruptedEnergyOpacity
+      );
 
-          setIntentTransition(240, "ease-in-out");
+      releaseTimer = setTimeout(() => {
 
-          contactIcon.style.opacity = "0";
-          contactEnergy.style.opacity = "0";
+        /*
+          The paused animations underneath are already sitting at
+          these same opacity values, so removing the temporary
+          overrides is visually seamless.
+        */
+        contactIcon.style.removeProperty("opacity");
+        contactEnergy.style.removeProperty("opacity");
 
-          releaseTimer = setTimeout(() => {
+        contactIcon.style.removeProperty("transition");
+        contactEnergy.style.removeProperty("transition");
 
-            contactIcon.style.removeProperty("animation");
-            contactEnergy.style.removeProperty("animation");
+        /*
+          Resume the original CSS animations from the exact phase
+          at which intent interrupted them.
+        */
+        contactIcon.style.removeProperty(
+          "animation-play-state"
+        );
 
-            contactIcon.style.removeProperty("transition");
-            contactEnergy.style.removeProperty("transition");
+        contactEnergy.style.removeProperty(
+          "animation-play-state"
+        );
 
-            contactIcon.style.removeProperty("opacity");
-            contactEnergy.style.removeProperty("opacity");
+        intentActive = false;
+        interruptedIconOpacity = null;
+        interruptedEnergyOpacity = null;
 
-          }, 260);
-
-        });
-
-      });
+      }, 260);
 
     }
 
@@ -772,6 +840,10 @@
       "pointerdown",
       (event) => {
 
+        /*
+          Mouse/trackpad intent has already been expressed by hover.
+          Touch, pen, and coarse-pointer interaction resolve on press.
+        */
         if (
           event.pointerType !== "mouse" ||
           !fineHoverQuery.matches
@@ -790,6 +862,12 @@
         return;
       }
 
+      /*
+        Keep the resolved state just long enough for the physical
+        press to read as a response. On mobile, the contact handoff
+        will usually take over before the return is perceptually
+        important.
+      */
       setTimeout(() => {
 
         pressIntent = false;
@@ -849,14 +927,23 @@
         focusIntent = false;
         pressIntent = false;
 
-        contactIcon.style.removeProperty("animation");
-        contactEnergy.style.removeProperty("animation");
+        intentActive = false;
+        interruptedIconOpacity = null;
+        interruptedEnergyOpacity = null;
+
+        contactIcon.style.removeProperty("opacity");
+        contactEnergy.style.removeProperty("opacity");
 
         contactIcon.style.removeProperty("transition");
         contactEnergy.style.removeProperty("transition");
 
-        contactIcon.style.removeProperty("opacity");
-        contactEnergy.style.removeProperty("opacity");
+        contactIcon.style.removeProperty(
+          "animation-play-state"
+        );
+
+        contactEnergy.style.removeProperty(
+          "animation-play-state"
+        );
 
       }
     );
