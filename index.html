@@ -128,156 +128,107 @@
       color: var(--echo-soft-white);
 
       background:
+        radial-gradient(
+          140% 120% at 50% 0%,
+          rgba(55, 116, 255, .38) 0%,
+          rgba(25, 67, 186, .18) 18%,
+          rgba(8, 20, 65, 0) 48%
+        ),
         linear-gradient(
           180deg,
-          #416BA8 0%,
-          #31558B 26%,
-          #223C69 60%,
-          #162542 100%
+          #1848c4 0%,
+          #102e85 12%,
+          #081635 34%,
+          #040915 60%,
+          #02040b 100%
         );
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        inset 0 -2px 2px rgba(0,0,0,.20),
-        0 7px 17px rgba(0,0,0,.29);
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.72),
+        0 0 0 1px rgba(34, 133, 255, .35),
+        0 0 14px rgba(37, 133, 255, .18),
+        0 8px 20px rgba(0,0,0,.35);
     }
 
-    /* BUTTON LABEL */
+    /* BUTTON INTERIOR GLOSS / TOP SHEEN / LOWER BLUE ENERGY BAND */
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+
+      background:
+        radial-gradient(
+          70px 24px at 8% 10%,
+          rgba(255,255,255,.78) 0%,
+          rgba(255,255,255,.28) 16%,
+          rgba(255,255,255,0) 45%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.16) 0%,
+          rgba(255,255,255,.07) 10%,
+          rgba(255,255,255,0) 24%
+        ),
+        radial-gradient(
+          120% 85% at 50% 105%,
+          rgba(29, 114, 255, .20) 0%,
+          rgba(15, 58, 181, .10) 30%,
+          rgba(0,0,0,0) 60%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,0) 72%,
+          rgba(0, 132, 255, .22) 84%,
+          rgba(74, 200, 255, .72) 94%,
+          rgba(10, 71, 221, .40) 100%
+        );
+    }
+
+    /* COBALT RING + TOP-LEFT SURFACE FLARE + OUTER AURA */
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 3;
+
+      background:
+        radial-gradient(
+          circle at 8% 10%,
+          rgba(255,255,255,.90) 0%,
+          rgba(149,226,255,.75) 1.5px,
+          rgba(255,255,255,0) 7px
+        );
+
+      box-shadow:
+        inset 0 0 0 2px rgba(27, 154, 255, .96),
+        inset 0 0 0 3px rgba(7, 34, 110, .28),
+        inset 0 0 10px rgba(28, 132, 255, .22),
+        0 0 12px rgba(29, 135, 255, .28),
+        0 0 20px rgba(29, 135, 255, .10);
+    }
+
+    /* STATIC BUTTON LABEL */
     .btn-label {
       position: relative;
-      z-index: 4;      
+      z-index: 4;
+      color: rgba(255,255,255,.98);
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
     }
 
     .btn-label i {
       font-size: 17px;
       line-height: 1;
-      opacity: .30;
+      opacity: 1;
+      color: rgba(255,255,255,.98);
       transform: translateX(2px);
-
-      animation:
-        icon-phase-cycle
-        5s
-        ease-in-out
-        infinite;
     }
-
-    /* BUTTON INTERNAL ENERGY */
-    .btn-energy {
-      position: absolute;
-      z-index: 1;
-      inset: 2px;
-      border-radius: inherit;
-      pointer-events: none;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 51%,
-          rgba(78,122,238,0.72) 0%,
-          rgba(65,107,221,0.60) 7%,
-          rgba(52,92,202,0.552) 38%,
-          rgba(30,65,154,0.126) 71%,
-          rgba(30,65,154,0.042) 81%,
-          rgba(30,65,154,0) 90%          
-        );
-
-      transform: scale(1.30,1.19);
-      transform-origin: 50% 51%;
-      opacity: 0;
-      animation:
-        internal-energy-cycle
-        5s
-        ease-in-out
-        infinite;
-    }
-
-    /* BUTTON ENERGY ANIMATION */
-    @keyframes internal-energy-cycle {
-      0%      { opacity:0; }
-      8.8%    { opacity:0; }
-      13.2%   { opacity:.059; }
-      17.6%   { opacity:.128; }
-      22%     { opacity:.186; }
-      26.4%   { opacity:.258; }
-      48.4%   { opacity:.755; }
-      65.12%  { opacity:.755; }      
-      70.4%   { opacity:.542; }
-      75.68%  { opacity:.343; }
-      80.96%  { opacity:.173; }
-      85.36%  { opacity:.059; }
-      88%     { opacity:0; }
-      100%    { opacity:0; }
-    } 
-    
-    /* BUTTON UPPER MATERIAL RESPONSE */
-    .btn::before {
-      content: "";
-      position: absolute;
-      z-index: 2;
-      left: 9%;
-      right: 9%;
-      top: 4px;
-      height: 36%;
-      border-radius: 999px;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(63,129,220,.18) 0%,
-          rgba(42,101,190,.07) 38%,
-          rgba(31,75,150,.020) 70%,
-          rgba(31,75,150,0) 100%
-        );
-
-      filter: blur(9px);
-      pointer-events: none;
-    }
-
-    /* BUTTON EDGE TREATMENT */
-    .btn::after {
-      content: "";
-      position: absolute;
-      z-index: 3;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.18),
-        inset 0 -1px 0 rgba(0,0,0,.42);
-    }
-
-    /* ICON ENERGY ANIMATION */
-    @keyframes icon-phase-cycle {
-      0%      { opacity: .00; }
-      8.8%    { opacity: .05; }
-
-      13.2%   { opacity: .106; }
-      17.6%   { opacity: .181; }
-      22%     { opacity: .238; }
-      26.4%   { opacity: .303; }
-
-      48.4%   { opacity: .80; }
-      65.12%  { opacity: .80; }
-
-      70.4%   { opacity: .584; }
-      75.68%  { opacity: .388; }
-      80.96%  { opacity: .219; }
-      85.36%  { opacity: .106; }
-
-      88%     { opacity: .05; }
-      100%    { opacity: .00; }
-    }
-
-
-    /* = PRIMARY ACTION — INTENT RESOLUTION = */
-    /*
-      Idle: intrigue.
-      Intent: clarity.
-
-      Interaction temporarily pauses the existing icon and LBB cycles.
-      On release, each layer returns to the exact interrupted state
-      before the original cycles resume from the same phase.
-    */
-
 
     /* = CONTACT ACTIONS = */
     .icon-row {
@@ -436,19 +387,6 @@
       outline-offset: 1px;
     }
 
-    /* = ACCESSIBILITY — REDUCED MOTION = */
-    @media (prefers-reduced-motion: reduce) {
-
-      .btn-energy {
-        animation: none;
-        opacity: 0;
-      }
-
-      .btn-label i {
-        animation: none;
-        opacity: .90;
-      }
-    }
 
   </style>
 </head>
@@ -473,12 +411,6 @@
         href="contact.vcf"
         download
         aria-label="Add to Contacts">
-
-        <span
-          class="btn-energy"
-          aria-hidden="true">
-        </span>
-
         <span class="btn-label">
 
           <!-- Add to Contacts -->
@@ -607,352 +539,6 @@
     /* CONTACT BUTTON HAPTIC FEEDBACK */
     const contactButton =
       document.getElementById("contactButton");
-
-
-    /* PRIMARY ACTION INTENT RESOLUTION */
-    const contactIcon =
-      contactButton.querySelector(".btn-label i");
-
-    const contactEnergy =
-      contactButton.querySelector(".btn-energy");
-
-    const fineHoverQuery =
-      window.matchMedia("(hover: hover) and (pointer: fine)");
-
-    const reducedMotionQuery =
-      window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    let hoverIntent = false;
-    let focusIntent = false;
-    let pressIntent = false;
-
-    let intentActive = false;
-    let interruptedIconOpacity = null;
-    let interruptedEnergyOpacity = null;
-    let releaseTimer = null;
-
-
-    function setIntentTransition(duration, easing) {
-
-      contactIcon.style.transition =
-        `opacity ${duration}ms ${easing}`;
-
-      contactEnergy.style.transition =
-        `opacity ${duration}ms ${easing}`;
-    }
-
-
-    function setIntentOpacity(element, value) {
-
-      /*
-        !important is intentional here:
-        a running/paused CSS animation normally owns opacity.
-        This lets the temporary intent state sit above the paused
-        animation without destroying or restarting that animation.
-      */
-      element.style.setProperty(
-        "opacity",
-        value,
-        "important"
-      );
-    }
-
-
-    function pauseIntentCycles() {
-
-      contactIcon.style.animationPlayState = "paused";
-      contactEnergy.style.animationPlayState = "paused";
-
-      /*
-        Read the exact visual state after pausing.
-        These are the states we will return to before resuming.
-      */
-      interruptedIconOpacity =
-        getComputedStyle(contactIcon).opacity;
-
-      interruptedEnergyOpacity =
-        getComputedStyle(contactEnergy).opacity;
-
-      contactIcon.style.transition = "none";
-      contactEnergy.style.transition = "none";
-
-      setIntentOpacity(
-        contactIcon,
-        interruptedIconOpacity
-      );
-
-      setIntentOpacity(
-        contactEnergy,
-        interruptedEnergyOpacity
-      );
-    }
-
-
-    function resolveContactIntent() {
-
-      if (reducedMotionQuery.matches) {
-        return;
-      }
-
-      clearTimeout(releaseTimer);
-
-      if (!intentActive) {
-
-        intentActive = true;
-        pauseIntentCycles();
-
-      }
-
-      requestAnimationFrame(() => {
-
-        requestAnimationFrame(() => {
-
-          setIntentTransition(
-            180,
-            "ease-out"
-          );
-
-          setIntentOpacity(
-            contactIcon,
-            ".90"
-          );
-
-          setIntentOpacity(
-            contactEnergy,
-            ".755"
-          );
-
-        });
-
-      });
-
-    }
-
-
-    function releaseContactIntent() {
-
-      if (
-        reducedMotionQuery.matches ||
-        !intentActive
-      ) {
-        return;
-      }
-
-      clearTimeout(releaseTimer);
-
-      /*
-        Return to the exact point at which the normal cycle
-        was interrupted. The animations remain paused during
-        this transition.
-      */
-      setIntentTransition(
-        240,
-        "ease-in-out"
-      );
-
-      setIntentOpacity(
-        contactIcon,
-        interruptedIconOpacity
-      );
-
-      setIntentOpacity(
-        contactEnergy,
-        interruptedEnergyOpacity
-      );
-
-      releaseTimer = setTimeout(() => {
-
-        /*
-          The paused animations underneath are already sitting at
-          these same opacity values, so removing the temporary
-          overrides is visually seamless.
-        */
-        contactIcon.style.removeProperty("opacity");
-        contactEnergy.style.removeProperty("opacity");
-
-        contactIcon.style.removeProperty("transition");
-        contactEnergy.style.removeProperty("transition");
-
-        /*
-          Resume the original CSS animations from the exact phase
-          at which intent interrupted them.
-        */
-        contactIcon.style.removeProperty(
-          "animation-play-state"
-        );
-
-        contactEnergy.style.removeProperty(
-          "animation-play-state"
-        );
-
-        intentActive = false;
-        interruptedIconOpacity = null;
-        interruptedEnergyOpacity = null;
-
-      }, 260);
-
-    }
-
-
-    function updateContactIntent() {
-
-      if (
-        hoverIntent ||
-        focusIntent ||
-        pressIntent
-      ) {
-        resolveContactIntent();
-      } else {
-        releaseContactIntent();
-      }
-
-    }
-
-
-    contactButton.addEventListener(
-      "pointerenter",
-      (event) => {
-
-        if (
-          event.pointerType === "mouse" &&
-          fineHoverQuery.matches
-        ) {
-          hoverIntent = true;
-          updateContactIntent();
-        }
-
-      }
-    );
-
-
-    contactButton.addEventListener(
-      "pointerleave",
-      (event) => {
-
-        if (
-          event.pointerType === "mouse" &&
-          fineHoverQuery.matches
-        ) {
-          hoverIntent = false;
-          updateContactIntent();
-        }
-
-      }
-    );
-
-
-    contactButton.addEventListener(
-      "pointerdown",
-      (event) => {
-
-        /*
-          Mouse/trackpad intent has already been expressed by hover.
-          Touch, pen, and coarse-pointer interaction resolve on press.
-        */
-        if (
-          event.pointerType !== "mouse" ||
-          !fineHoverQuery.matches
-        ) {
-          pressIntent = true;
-          updateContactIntent();
-        }
-
-      }
-    );
-
-
-    function releasePressIntent() {
-
-      if (!pressIntent) {
-        return;
-      }
-
-      /*
-        Keep the resolved state just long enough for the physical
-        press to read as a response. On mobile, the contact handoff
-        will usually take over before the return is perceptually
-        important.
-      */
-      setTimeout(() => {
-
-        pressIntent = false;
-        updateContactIntent();
-
-      }, 120);
-
-    }
-
-
-    contactButton.addEventListener(
-      "pointerup",
-      releasePressIntent
-    );
-
-    contactButton.addEventListener(
-      "pointercancel",
-      releasePressIntent
-    );
-
-
-    contactButton.addEventListener(
-      "focus",
-      () => {
-
-        requestAnimationFrame(() => {
-
-          focusIntent =
-            contactButton.matches(":focus-visible");
-
-          updateContactIntent();
-
-        });
-
-      }
-    );
-
-
-    contactButton.addEventListener(
-      "blur",
-      () => {
-
-        focusIntent = false;
-        updateContactIntent();
-
-      }
-    );
-
-
-    reducedMotionQuery.addEventListener(
-      "change",
-      () => {
-
-        clearTimeout(releaseTimer);
-
-        hoverIntent = false;
-        focusIntent = false;
-        pressIntent = false;
-
-        intentActive = false;
-        interruptedIconOpacity = null;
-        interruptedEnergyOpacity = null;
-
-        contactIcon.style.removeProperty("opacity");
-        contactEnergy.style.removeProperty("opacity");
-
-        contactIcon.style.removeProperty("transition");
-        contactEnergy.style.removeProperty("transition");
-
-        contactIcon.style.removeProperty(
-          "animation-play-state"
-        );
-
-        contactEnergy.style.removeProperty(
-          "animation-play-state"
-        );
-
-      }
-    );
-
 
     contactButton.addEventListener("click", () => {
 
