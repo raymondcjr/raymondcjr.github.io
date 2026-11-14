@@ -14,12 +14,16 @@
 
   <style>
     :root {
+      /* PAGE MATERIALS */
       --bg-image: url("JettaGLIBGDark.png");
+      --page-overlay: rgba(0, 0, 0, 0.11);
+      --card-bg: rgba(0, 0, 0, 0.50);
+
+      /* SHARED ACCENT PALETTE */
       --echo-light-blue: #6996C7;
+      --bright-blue: #64A0F2;
       --echo-soft-white: #F7F5F2;
       --manila: #E7DCB6;
-      --card-bg: rgba(0, 0, 0, 0.50);
-      --page-overlay: rgba(0, 0, 0, 0.11);
     }
 
     body {
@@ -48,14 +52,14 @@
     }
 
     .card {
-      padding: 30px 67px 60px;
+      padding: 25px 0 40px;
       margin: 0 8px;
       background: var(--card-bg);
       border-radius: 18px;
       backdrop-filter: blur(2px);
       text-align: center;
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 1);
-      transform: translateY(-21px);
+      transform: translateY(-35px);
     }
 
     .name {
@@ -170,7 +174,7 @@
         0 0 19px rgba(29, 135, 255, 0.075);
     }
 
-    /* BUTTON LABEL — HYBRID FIELD TEST */
+    /* BUTTON LABEL — HYBRID */
     .btn-label {
       position: relative;
       z-index: 6;
@@ -196,8 +200,8 @@
     .icon-row {
       display: flex;
       justify-content: center;
-      gap: 33px;
-      margin: 35px 0 0;
+      gap: 37px;
+      margin: 30px 0 0;
     }
 
     .icon {
@@ -215,10 +219,63 @@
 
     .phone { color: #25D366; }
     .message { color: var(--echo-light-blue); }
-    .email { color: var(--manila); }
+    .email { color: var(--manila); } 
+
+    /* = VW MEDIA PORTAL — LIVE EMBED = */
+    .media-section {
+      margin-top: 37px;
+      text-align: center;
+    }
+
+    .media-portal {
+      position: relative;
+      margin: 0 53px;
+      height: 109px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #000000;
+    }
+
+    .media-portal iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--portal-source-width, 630px);
+      height: 800px;
+      border: 0;
+      /* Intentional overscan: CSS renders at .36 while JavaScript
+         sizes the source viewport from .35 to bury the site's
+         right-edge artifact behind the portal clip. */
+      transform: scale(.36) translateY(-137px);
+      transform-origin: top left;
+      pointer-events: none;
+      background: #000000;
+    }
+
+    .media-portal-link {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: block;
+      border-radius: inherit;
+      text-decoration: none;
+    }
+
+    .media-link {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    .media-link span {
+      color: var(--bright-blue);
+    }
 
     .brand-footer {
-      margin: 43px 0 0;
+      margin: 30px 0 0;
       display: flex;
       justify-content: center;
     }
@@ -345,7 +402,35 @@
         <a class="icon email" href="mailto:raymondcjr.vw@gmail.com" aria-label="Email Raymond">
           <i class="fa-solid fa-envelope" aria-hidden="true"></i>
         </a>
-      </div>
+      </div>  
+
+      <!-- = VW MEDIA PORTAL — LIVE EMBED = -->
+      <section class="media-section">
+        <div class="media-portal" id="mediaPortal">
+          <iframe
+            src="https://media.vw.com/"
+            loading="eager"
+            title="Volkswagen US Media Site live preview">
+          </iframe>
+
+          <a
+            class="media-portal-link"
+            href="https://media.vw.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Explore the Volkswagen US Media Site">
+          </a>
+        </div>
+
+        <a
+          class="media-link"
+          href="https://media.vw.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Explore the Volkswagen US Media Site">
+          Explore Volkswagen: click above or click <span>here</span>.
+        </a>
+      </section>
 
       <div class="brand-footer">
         <a href="https://www.vw.com" target="_blank" rel="noopener noreferrer" aria-label="Visit the official Volkswagen website">
@@ -374,17 +459,35 @@
     hidden
   >
     <button class="disclaimer-close" id="disclaimerClose" type="button" aria-label="Close disclaimer">&times;</button>
-    <h2 id="disclaimerTitle">Independent Salesperson Page</h2>
+    <h2 id="disclaimerTitle">Independent Volkswagen Specialist Page</h2>
     <p>
       This independently created and maintained personal contact page is for a
-      Killeen Volkswagen sales professional and is not an official website of
-      Killeen Volkswagen or Volkswagen of America. Volkswagen trademarks and
-      logos are the property of their respective owners. The Volkswagen link
-      directs to the official Volkswagen website.
+      Volkswagen brand specialist at Killeen Volkswagen and is not an official
+      website of Killeen Volkswagen or Volkswagen of America. Volkswagen
+      trademarks and logos are the property of their respective owners.
+      Volkswagen links on this page direct to official Volkswagen websites.
     </p>
   </aside>
 
   <script>
+    const mediaPortal = document.getElementById("mediaPortal");
+
+    function sizeMediaPortalSource() {
+      /* Deliberately lower than the CSS render scale (.36).
+         This creates slight horizontal overscan so the embedded
+         site's right-edge artifact is clipped outside the aperture. */
+      const sourceLayoutScale = .35;
+      const sourceWidth = mediaPortal.clientWidth / sourceLayoutScale;
+
+      mediaPortal.style.setProperty(
+        "--portal-source-width",
+        `${sourceWidth}px`
+      );
+    }
+
+    sizeMediaPortalSource();
+    window.addEventListener("resize", sizeMediaPortalSource);
+
     const contactButton = document.getElementById("contactButton");
 
     contactButton.addEventListener("click", () => {
