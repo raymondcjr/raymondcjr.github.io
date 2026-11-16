@@ -279,8 +279,9 @@
       text-decoration: none;
     }
 
-    .media-link span {
+    .media-link a {
       color: var(--bright-blue);
+      text-decoration: none;
     }
 
     .brand-footer {
@@ -431,14 +432,24 @@
           </a>
         </div>
 
-        <a
-          class="media-link"
-          href="https://media.vw.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Explore the Volkswagen US Media Site">
-          Explore VW: <span>tap slides above</span> or VW emblem below.
-        </a>
+        <div class="media-link">
+          Explore VW:
+          <a
+            href="https://media.vw.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Explore the Volkswagen US Media Site">
+            tap slides above
+          </a>
+          or
+          <a
+            href="https://www.vw.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit the official Volkswagen website">
+            VW emblem below
+          </a>.
+        </div>
       </section>
 
       <div class="brand-footer">
