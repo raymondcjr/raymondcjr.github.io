@@ -85,7 +85,7 @@
       min-width: 100px;
       max-width: 70%;
       padding: 9px 22px;
-      margin: 23px 0 0;
+      margin: 17px 0 0;
       border: none;
       border-radius: 30px;
       text-align: center;
@@ -101,7 +101,7 @@
           rgba(8, 20, 65, 0) 48%
         ),
         linear-gradient(
-          180deg,
+          179deg,
           #2a63e8 0%,
           #1641ad 16%,
           #071a46 45%,
@@ -112,81 +112,76 @@
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.18),
         inset 0 -1px 0 rgba(0, 0, 0, 0.72),
-        0 0 0 1px rgba(34, 133, 255, 0.35),
-        0 0 14px rgba(37, 133, 255, 0.18),
-        0 8px 20px rgba(0, 0, 0, 0.35);
+        0 0 0 1.2px rgba(42, 99, 232, 0.35);
     }
 
     /* BUTTON UPPER MATERIAL RESPONSE */
     .btn::before {
-      content: "";
-      position: absolute;
-      z-index: 2;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      height: 65%;
-      border-radius: inherit;
-      pointer-events: none;
-      filter: blur(9px);
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        height: 65%;
+        border-radius: inherit;
+        pointer-events: none;
+        filter: blur(9px);
 
-      background:
-        radial-gradient(
-          70px 24px at 8% 10%,
-          rgba(255, 255, 255, 0.64) 0%,
-          rgba(255, 255, 255, 0.22) 16%,
-          rgba(255, 255, 255, 0) 45%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(204, 227, 255, 0.17) 0%,
-          rgba(113, 164, 247, 0.07) 10%,
-          rgba(39, 88, 188, 0) 25%
-        ),
-
-        radial-gradient(
-          120% 85% at 50% 105%,
-          rgba(30, 104, 242, 0.19) 0%,
-          rgba(16, 56, 174, 0.09) 30%,
-          rgba(0, 0, 0, 0) 60%
-        ),
-
-        linear-gradient(
-          180deg,
-          rgba(27, 96, 230, 0) 0%,
-          rgba(27, 96, 230, 0) 40%,
-          rgba(27, 96, 230, 0.02) 52%,
-          rgba(27, 96, 230, 0.045) 66%,
-          rgba(27, 96, 230, 0.07) 80%,
-          rgba(27, 96, 230, 0.085) 90%,
-          rgba(18, 66, 198, 0.06) 100%
-        );
-    }
-
-    /* BUTTON EDGE TREATMENT — BLUE RING + MATURE GLASS */
+        background:
+          radial-gradient(
+            70px 24px at 8% 10%,
+            rgba(255, 255, 255, 0.64) 0%,
+            rgba(255, 255, 255, 0.22) 16%,
+            rgba(255, 255, 255, 0) 45%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(204, 227, 255, 0.17) 0%,
+            rgba(113, 164, 247, 0.07) 10%,
+            rgba(39, 88, 188, 0) 25%
+          ),
+          radial-gradient(
+            120% 85% at 50% 105%,
+            rgba(30, 104, 242, 0.19) 0%,
+            rgba(16, 56, 174, 0.09) 30%,
+            rgba(0, 0, 0, 0) 60%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(27, 96, 230, 0) 0%,
+            rgba(27, 96, 230, 0) 40%,
+            rgba(27, 96, 230, 0.02) 52%,
+            rgba(27, 96, 230, 0.045) 66%,
+            rgba(27, 96, 230, 0.07) 80%,
+            rgba(27, 96, 230, 0.085) 90%,
+            rgba(18, 66, 198, 0.06) 100%
+          );
+      }
+    /* BUTTON EDGE TREATMENT — BLACK RING SPECIMEN */
     .btn::after {
-      content: "";
-      position: absolute;
-      z-index: 3;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
+        content: "";
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
 
-      background:
-        radial-gradient(
-          circle at 9% 11%,
-          rgba(255,255,255,.90) 0%,
-          rgba(149,226,255,.75) 0.75px,
-          rgba(255,255,255,0) 3px
-        );
+        background:
+          radial-gradient(
+            circle at 9% 11%,
+            rgba(255,255,255,.90) 0%,
+            rgba(149,226,255,.75) 0.75px,
+            rgba(255,255,255,0) 3px
+          );
 
-      box-shadow:
-        inset 0 0 0 1px rgba(35, 160, 255, 0.96),
-        inset 0 0 0 2px rgba(4, 25, 84, 0.68),
-        inset 0 0 9px rgba(29, 132, 255, 0.24),
-        0 0 11px rgba(29, 135, 255, 0.22),
-        0 0 19px rgba(29, 135, 255, 0.075);
-    }
+        box-shadow:
+          inset 0 0 0 1px rgba(2,3,6,.96),
+          inset 0 0 0 2px rgba(12,16,24,.80),
+          inset 0 0 9px rgba(0,0,0,.30),
+          0 0 11px rgba(0,0,0,.22),
+          0 0 19px rgba(0,0,0,.075);
+      }
 
     /* BUTTON LABEL — HYBRID */
     .btn-label {
