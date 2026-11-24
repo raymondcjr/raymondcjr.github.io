@@ -261,6 +261,17 @@
       background: #000000;
     }
 
+    /* iOS PORTAL CHALLENGER v1 — source viewport width only.
+       Test whether VW Media is entering a narrower responsive layout.
+       Keep the .36 render scale and -137px vertical crop unchanged.
+       Center only the additional horizontal width introduced by the floor. */
+    @supports (-webkit-touch-callout: none) {
+      .media-portal iframe {
+        width: max(850px, var(--portal-source-width, 630px));
+        left: min(0px, calc((var(--portal-source-width, 630px) - 850px) * .18));
+      }
+    }
+
     .media-portal-link {
       position: absolute;
       inset: 0;
