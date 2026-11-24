@@ -230,7 +230,7 @@
     .message { color: var(--echo-light-blue); }
     .email { color: var(--manila); } 
 
-    /* = VW DRIVERGEAR PORTAL — LIVE EMBED CHALLENGER = */
+    /* = VW MEDIA PORTAL — LIVE EMBED = */
     .media-section {
       margin-top: 37px;
       text-align: center;
@@ -252,13 +252,10 @@
       width: var(--portal-source-width, 630px);
       height: 800px;
       border: 0;
-      /* DriverGear challenger v1:
-         Preserve the proven .36/.35 visual-density/overscan relationship
-         for the first source test, but use a new vertical crop because
-         DriverGear has a taller header/navigation stack than media.vw.com.
-         This crop is intentionally provisional and is the primary tuning
-         variable for the first live specimen. */
-      transform: scale(.36) translateY(-260px);
+      /* Intentional overscan: CSS renders at .36 while JavaScript
+         sizes the source viewport from .35 to bury the site's
+         right-edge artifact behind the portal clip. */
+      transform: scale(.36) translateY(-137px);
       transform-origin: top left;
       pointer-events: none;
       background: #000000;
@@ -417,34 +414,34 @@
         </a>
       </div>  
 
-      <!-- = VW DRIVERGEAR PORTAL — LIVE EMBED CHALLENGER = -->
+      <!-- = VW MEDIA PORTAL — LIVE EMBED = -->
       <section class="media-section">
         <div class="media-portal" id="mediaPortal">
           <iframe
-            src="https://drivergear.vw.com/vw-retail/"
+            src="https://media.vw.com/"
             loading="eager"
-            title="Volkswagen DriverGear live preview">
+            title="Volkswagen US Media Site live preview">
           </iframe>
 
           <a
             class="media-portal-link"
-            href="https://drivergear.vw.com/vw-retail/"
+            href="https://media.vw.com/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Shop Volkswagen DriverGear">
+            aria-label="Explore the Volkswagen US Media Site">
           </a>
         </div>
 
         <div class="media-link">
-          Explore
+          Explore VW:
           <a
-            href="https://drivergear.vw.com/vw-retail/"
+            href="https://media.vw.com/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Shop Volkswagen DriverGear">
-            DriverGear
+            aria-label="Explore the Volkswagen US Media Site">
+            tap slides above
           </a>
-          or click
+          or
           <a
             href="https://www.vw.com"
             target="_blank"
@@ -496,10 +493,9 @@
     const mediaPortal = document.getElementById("mediaPortal");
 
     function sizeMediaPortalSource() {
-      /* DriverGear challenger v1:
-         Keep the established .35 source-layout scale against the .36
-         CSS render scale for a controlled first comparison. Revisit only
-         if the DriverGear source itself demonstrates a reason to change it. */
+      /* Deliberately lower than the CSS render scale (.36).
+         This creates slight horizontal overscan so the embedded
+         site's right-edge artifact is clipped outside the aperture. */
       const sourceLayoutScale = .35;
       const sourceWidth = mediaPortal.clientWidth / sourceLayoutScale;
 
